@@ -63,6 +63,29 @@ fn field_timing_and_deterministic_seeking() {
 }
 
 #[test]
+fn early_head_switch_sync_does_not_black_out_picture() {
+    let mut p = Params::default();
+    p.set("hs_model", json!("RF switch")).unwrap();
+    p.set("hs_shift_us", json!(-20)).unwrap();
+    p.set("hs_noise", json!(0)).unwrap();
+    p.set("hs_phase_deg", json!(0)).unwrap();
+    p.set("hs_mask_lines", json!(0)).unwrap();
+    let input = vec![192; WIDTH * FIELD_HEIGHT * 3];
+    let engine = Engine::new(p).unwrap();
+    for field in 0..2 {
+        let out = engine.render_field(&input, field, 0, false).unwrap();
+        for line in FIELD_HEIGHT - 3..FIELD_HEIGHT {
+            let center = (line * WIDTH + WIDTH / 2) * 3;
+            assert!(
+                out.rgb[center..center + 3].iter().all(|&c| c > 100),
+                "field {field}, line {line}: {:?}",
+                &out.rgb[center..center + 3]
+            );
+        }
+    }
+}
+
+#[test]
 fn head_phase_mismatch_does_not_modify_recording_taps() {
     let mut p = Params::default();
     p.set("rf_rate", json!("1x")).unwrap();

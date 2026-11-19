@@ -54,6 +54,8 @@ A full signal render can take longer than a frame interval. Android playback adv
 
 ## Build and verify
 
+For a Windows release, extract the ZIP and double-click **Launch PAL VHS.cmd**. Keep the `app/` folder beside the launcher.
+
 Follow the [step-by-step build and GitHub guide](docs/BUILD_AND_PUBLISH.md) to build the Windows app, produce an Android APK locally or in GitHub Actions, and attach both packages to a release.
 
 To run the engine tests without GStreamer, install Rust and put FFmpeg and FFprobe on `PATH` for the media tests.

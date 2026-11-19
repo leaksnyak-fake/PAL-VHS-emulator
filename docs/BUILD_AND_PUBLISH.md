@@ -28,13 +28,27 @@ Start from the directory that contains `Cargo.toml`, `README.md`, `android/`, an
    rustup toolchain install stable-x86_64-pc-windows-msvc
    $env:RUSTUP_TOOLCHAIN = "stable-x86_64-pc-windows-msvc"
    .\build_windows.ps1
-   .\dist\GStreamer\PAL-VHS.exe
+   & '.\dist\PAL-VHS\Launch PAL VHS.cmd'
    ```
 
-6. Open a sample MP4, select a tape preset, scrub the preview, and export a short clip. To prepare the Windows release asset, zip the whole application folder together with its DLLs and plugin directories.
+6. Open a sample MP4, select a tape preset, scrub the preview, and export a short clip. The release folder has this layout:
+
+   ```text
+   dist/PAL-VHS/
+   ├── Launch PAL VHS.cmd
+   ├── README.md
+   ├── docs/
+   └── app/
+       ├── PAL-VHS.exe
+       ├── GStreamer DLLs
+       ├── lib/gstreamer-1.0/
+       └── libexec/gstreamer-1.0/
+   ```
+
+   Zip the entire folder. To run the release, extract the whole ZIP and double-click **Launch PAL VHS.cmd**.
 
    ```powershell
-   Compress-Archive -Path ".\dist\GStreamer\*" -DestinationPath ".\dist\PAL-VHS-Windows-x64.zip"
+   Compress-Archive -Path ".\dist\PAL-VHS\*" -DestinationPath ".\dist\PAL-VHS-Windows-x64.zip"
    ```
 
 The executable is linked against the GStreamer SDK. Use its matching DLLs and plugins together. Windows export uses the FFmpeg tools on `PATH`.

@@ -163,38 +163,41 @@ fn detect(stream: &[f64], l: usize) -> (Vec<f64>, Vec<f64>, f64) {
     let threshold = blank0 - 0.5 * tip;
     let mut edges = Vec::new();
     let mut blank = Vec::new();
+    let mut last_blank = blank0;
     for n in 8..l {
         let start = n * SPL - 240;
         let window = &d[start..start + 760];
-        let k = window.iter().position(|v| *v < threshold);
-        let edge = if let Some(k) = k.filter(|k| *k > 0) {
-            let a = window[k - 1];
-            let bb = window[k];
+        let crossing = window
+            .iter()
+            .position(|v| *v < threshold)
+            .filter(|k| *k > 0)
+            .map(|k| start + k)
+            .or_else(|| {
+                // A large leftward shift can put sync before the normal window.
+                // Require a sustained pulse in the wider search.
+                (n * SPL - 520..=start).rev().find(|&i| {
+                    d[i - 1] >= threshold && d[i..i + SYNC_W / 2].iter().all(|&v| v < threshold)
+                })
+            });
+        let edge = if let Some(k) = crossing {
+            let a = d[k - 1];
+            let bb = d[k];
             let frac = if (a - bb).abs() > 1e-9 {
                 ((a - threshold) / (a - bb)).clamp(0.0, 1.0)
             } else {
                 0.0
             };
-            (start + k - 1) as f64 + frac
+            (k - 1) as f64 + frac
         } else {
             f64::NAN
         };
         edges.push(edge);
-        let base = if edge.is_nan() {
-            (n * SPL) as f64
-        } else {
-            edge
-        };
-        blank.push(
-            (0..32)
-                .map(|i| {
-                    d[(base + 150.0 + i as f64)
-                        .round()
-                        .clamp(0.0, (d.len() - 1) as f64) as usize]
-                })
-                .sum::<f64>()
-                / 32.0,
-        );
+        // With no sync reference, the nominal porch can fall inside the picture.
+        if edge.is_finite() {
+            let porch = (edge + 150.0).round() as usize;
+            last_blank = mean(&d[porch..porch + 32]);
+        }
+        blank.push(last_blank);
     }
     (edges, blank, tip)
 }
