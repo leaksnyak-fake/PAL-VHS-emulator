@@ -1,0 +1,22 @@
+pkgbase = pal-vhs
+	pkgdesc = PAL VHS degradation emulator
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/leaksnyak-fake/PAL-VHS-emulator
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = glib2
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = ffmpeg
+	options = !debug
+	source = pal-vhs-1.0.0.tar.gz::https://github.com/leaksnyak-fake/PAL-VHS-emulator/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 793e2e8270f99fab194c7e5cf8eea41cc9bb5dec91f011b9bca75251752405d8
+
+pkgname = pal-vhs
