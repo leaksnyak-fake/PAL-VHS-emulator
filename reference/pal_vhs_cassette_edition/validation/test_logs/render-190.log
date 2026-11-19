@@ -1,0 +1,7 @@
+2026-11-16 13:02:28,480 190 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 13:02:28,583 190 MainThread INFO Renderer created backend=process workers=2
+2026-11-16 13:02:28,584 190 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 13:02:28,586 190 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 13:02:28,588 190 MainThread INFO Renderer created backend=process workers=1
+2026-11-16 13:02:29,893 190 MainThread ERROR Process pool unusable; exit codes={199: 91}. Switching to one background thread.
+2026-11-16 13:02:29,895 190 pal-vhs-render_0 INFO Startup role=renderer frozen=False python=3.13.18

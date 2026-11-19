@@ -1,0 +1,32 @@
+[package]
+name = "pal-vhs"
+version = "0.2.0"
+edition = "2021"
+description = "Native PAL composite and VHS cassette signal simulator"
+publish = false
+
+[features]
+default = ["desktop"]
+desktop = ["dep:eframe", "dep:egui_plot", "dep:rfd", "dep:gstreamer", "dep:gstreamer-app", "dep:gstreamer-video"]
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+clap = { version = "4.5", features = ["derive"] }
+rustfft = "6.4"
+num-complex = "0.4"
+eframe = { version = "0.31.1", default-features = false, features = ["default_fonts", "glow", "x11", "wayland"], optional = true }
+egui_plot = { version = "0.31.0", optional = true }
+rfd = { version = "0.15", optional = true }
+tempfile = "3.20"
+gstreamer = { version = "0.24", features = ["v1_22"], optional = true }
+gstreamer-app = { version = "0.24", features = ["v1_22"], optional = true }
+gstreamer-video = { version = "0.24", features = ["v1_22"], optional = true }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+
+[[bin]]
+name = "pal-vhs"
+path = "src/main.rs"

@@ -1,0 +1,4 @@
+numpy
+scipy
+opencv-python
+PySide6-Essentials

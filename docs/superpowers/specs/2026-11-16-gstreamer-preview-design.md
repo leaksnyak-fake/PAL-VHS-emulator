@@ -1,0 +1,11 @@
+# GStreamer interactive preview
+
+The user requested GStreamer because preview lags, and approved fast approximate preview plus an exact mode on 2026-11-16. Four full processed frames measured 9.093 s; the same export with tape bypass measured 2.448 s; decoding eight original frames alone measured 84 ms. Replacing decoding alone cannot deliver smooth playback.
+
+Use an in-process GStreamer decoder, a bounded appsink and timestamped raw RGB samples. Keep the pipeline alive during sequential playback and use flush/accurate seeks for scrubbing. Normalize aspect, sample the two fields at 20 ms spacing, preserve existing field-mode semantics and cap cached decoded frames. Decode errors propagate once; no silent FFmpeg preview fallback. Export remains the exact existing signal path and FFmpeg encoder.
+
+Fast preview is default and visibly labelled approximate. It uses a lightweight native pixel/line model for tape softness, colour lag, noise, wobble, tracking, creases and head-switch artifacts; it does not compute the 17/35 MHz RF waveform. Exact preview continues through the existing Engine and supplies actual scopes. Scope controls require exact mode. Saving settings and exporting do not inherit the preview approximation. Playback uses elapsed time, bounded requests and drops late presentation frames instead of accumulating delay.
+
+`gst_media::GstVideoSource::open(&Path)->Result<Self,String>` provides public `info: media::VideoInfo` and `fields(frame:u64,&Params)->Result<(Vec<u8>,Vec<u8>),String>`. Runtime initialization checks packaged or installed GStreamer. Pipeline buffers must be mapped with negotiated strides and timestamps, not guessed memory layout. `preview::render_fast(&[u8], &[u8], frame:u64, &Params)->Result<renderer::FrameOutput,String>` consumes the same packed 720×288 fields as the exact engine. No scope taps are fabricated.
+
+Verify deterministic fast output and all field modes, real GStreamer decode and repeated seeks, parameter/source invalidation, bounded memory, exact/export regression tests, and sustained preview throughput on a longer synthetic clip. Publish measured p50/p95 frame times and avoid claiming 25 fps until measured. Ship a Windows binary with clear GStreamer runtime instructions or bundled runtime.

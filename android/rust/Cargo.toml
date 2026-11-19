@@ -1,0 +1,20 @@
+[package]
+name = "palvhs_jni"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "palvhs"
+crate-type = ["cdylib"]
+
+[dependencies]
+pal-vhs = { path = "../..", default-features = false }
+jni = "0.21"
+serde_json = "1.0"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "unwind"

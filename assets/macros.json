@@ -1,0 +1,84 @@
+{
+  "wear": [
+    "Tape wear",
+    "Fresh cassette → worn tape: RF loss, fine noise and more dropouts.",
+    {
+      "tape_wear": [
+        0,
+        0.4
+      ],
+      "tape_noise": [
+        0.02,
+        0.08
+      ],
+      "dropout_rate": [
+        0,
+        8
+      ],
+      "chroma_noise": [
+        0.006,
+        0.035
+      ]
+    }
+  ],
+  "colour": [
+    "Colour bleed",
+    "Aligned colour → soft colour spilling to the right of bright edges.",
+    {
+      "chroma_delay_ns": [
+        0,
+        650
+      ],
+      "chroma_play_bw": [
+        0.65,
+        0.25
+      ]
+    }
+  ],
+  "unstable": [
+    "Picture wobble",
+    "Steady picture → shaky vertical edges and top flagging. TV horizontal lock can hide some movement.",
+    {
+      "tb_jitter_ns": [
+        0,
+        140
+      ],
+      "tb_wobble_ns": [
+        0,
+        650
+      ],
+      "tb_skew_us": [
+        0,
+        5
+      ]
+    }
+  ],
+  "smear": [
+    "Tracking smears",
+    "Adds a moving mistracking band with stretched/repeated lines and colour loss.",
+    {
+      "track_band": [
+        0,
+        0.8
+      ],
+      "track_smear": [
+        0,
+        1
+      ]
+    }
+  ],
+  "crease": [
+    "Tape creases",
+    "Adds local tape speed errors, duplicated lines and horizontal tears.",
+    {
+      "wrinkle": [
+        0,
+        0.85
+      ],
+      "wrinkle_height": [
+        4,
+        40
+      ]
+    }
+  ]
+}

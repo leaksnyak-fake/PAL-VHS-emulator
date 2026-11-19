@@ -1,0 +1,16 @@
+PASS render: PAL VHS / SP - fresh cassette
+PASS render: PAL VHS / SP - home recording
+PASS render: PAL VHS / LP - long play
+PASS render: PAL VHS / SP - worn rental
+PASS render: PAL VHS / SP - tracking failure
+PASS render: PAL VHS / SP - creased cassette
+PASS render: PAL VHS / SP - stable playback
+PASS render: Deck / Budget 2-head / rough alignment
+PASS render: Deck / Domestic 2-head / aligned
+PASS render: Deck / Domestic 4-head / aligned
+PASS render: Deck / High-end 6+ head S-VHS deck / VHS playback
+PASS render: Deck / Professional / narrow residual (user reference)
+PASS render: Deck / Professional / later switch (+1.5 H)
+PASS render: Deck / Professional / SWP black mask
+PASS render: Deck / Fault demonstration / recorded servo error
+PASS deterministic re-render; tracking preset differs from fresh SP

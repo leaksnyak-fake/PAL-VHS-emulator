@@ -1,0 +1,55 @@
+2026-11-16 10:28:14,116 165 MainThread ERROR Preview render failure frame=0 backend=process
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 613, in poll
+    rgb, taps = fut.result()
+                ~~~~~~~~~~^^
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 139, in result
+    def result(self):raise BrokenProcessPool('dead on result')
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+concurrent.futures.process.BrokenProcessPool: dead on result
+2026-11-16 10:28:14,256 165 MainThread ERROR Preview render failure frame=0 backend=process
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 647, in schedule
+    future = self.renderer.submit(f1,f2,idx,self.params.to_dict(),need_taps)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 96, in submit
+    raise self.error
+ValueError: failed
+2026-11-16 10:28:14,372 165 MainThread ERROR Preview render failure frame=0 backend=process
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 647, in schedule
+    future = self.renderer.submit(f1,f2,idx,self.params.to_dict(),need_taps)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 96, in submit
+    raise self.error
+concurrent.futures.process.BrokenProcessPool: child terminated
+2026-11-16 10:28:14,372 165 MainThread ERROR Preview render failure frame=0 backend=thread
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 647, in schedule
+    future = self.renderer.submit(f1,f2,idx,self.params.to_dict(),need_taps)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 96, in submit
+    raise self.error
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 647, in schedule
+    future = self.renderer.submit(f1,f2,idx,self.params.to_dict(),need_taps)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 96, in submit
+    raise self.error
+concurrent.futures.process.BrokenProcessPool: child terminated
+2026-11-16 10:28:14,464 165 MainThread ERROR Preview render failure frame=0 backend=process
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 647, in schedule
+    future = self.renderer.submit(f1,f2,idx,self.params.to_dict(),need_taps)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 96, in submit
+    raise self.error
+ValueError: invalid field
+2026-11-16 10:28:14,563 165 MainThread ERROR Preview render failure frame=0 backend=process
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/gui.py", line 647, in schedule
+    future = self.renderer.submit(f1,f2,idx,self.params.to_dict(),need_taps)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/tests/test_renderer_recovery.py", line 96, in submit
+    raise self.error
+concurrent.futures.process.BrokenProcessPool: child terminated
+2026-11-16 10:28:14,564 165 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 10:28:14,638 165 MainThread INFO Renderer created backend=process workers=2
+2026-11-16 10:28:14,638 165 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 10:28:14,639 165 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 10:28:14,640 165 MainThread INFO Renderer created backend=process workers=1
+2026-11-16 10:28:15,566 165 MainThread ERROR Process pool unusable; exit codes={173: 91}. Switching to one background thread.
+2026-11-16 10:28:15,568 165 pal-vhs-render_0 INFO Startup role=renderer frozen=False python=3.13.18

@@ -1,0 +1,15 @@
+{
+  "field_mode": "frame",
+  "rf_rate": "2x",
+  "hs_model": "RF switch",
+  "hs_advance": 15.5,
+  "hs_servo_lines": 1.5,
+  "hs_residual": 0.95,
+  "hs_residual_follow": true,
+  "hs_residual_height": 2,
+  "hs_residual_width_px": 90,
+  "hs_residual_x": 0.59,
+  "hs_residual_motion": "Drift + jitter",
+  "hs_mask_lines": 0,
+  "seed": 7
+}

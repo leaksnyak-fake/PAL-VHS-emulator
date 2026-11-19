@@ -1,0 +1,28 @@
+2026-11-16 08:17:26,155 178 MainThread INFO Startup role=renderer frozen=False python=3.13.18
+2026-11-16 13:13:54,026 178 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 13:13:54,110 178 MainThread INFO Renderer created backend=process workers=2
+2026-11-16 13:13:54,111 178 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 13:13:54,112 178 MainThread INFO Renderer created backend=thread workers=1
+2026-11-16 13:13:54,113 178 MainThread INFO Renderer created backend=process workers=1
+2026-11-16 13:13:55,265 178 MainThread ERROR Process pool unusable; exit codes={189: 91}. Switching to one background thread.
+2026-11-16 13:13:55,266 178 pal-vhs-render_0 INFO Startup role=renderer frozen=False python=3.13.18
+2026-11-16 13:13:55,499 178 pal-vhs-render_0 ERROR Field render failed frame=0 field=0
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/pipeline.py", line 80, in _field_task
+    return render_field(*args)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/pipeline.py", line 58, in render_field
+    stream = deck.process_field(comp, fi, frame_idx, t)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/vhs.py", line 507, in process_field
+    rf = rf + self._tilt_noise(wn)
+              ^^^^^^^^^^^^^^^^
+AttributeError: 'Deck' object has no attribute '_tilt_noise'
+2026-11-16 13:13:55,657 178 pal-vhs-render_0 ERROR Field render failed frame=0 field=1
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/pipeline.py", line 80, in _field_task
+    return render_field(*args)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/pipeline.py", line 58, in render_field
+    stream = deck.process_field(comp, fi, frame_idx, t)
+  File "/tmp/claude-0/-home-claude/1fdb2a8f-ae64-5c48-9bf7-18bba7ac4619/scratchpad/cass/pal_vhs_cassette_edition/pal_vhs/vhs.py", line 507, in process_field
+    rf = rf + self._tilt_noise(wn)
+              ^^^^^^^^^^^^^^^^
+AttributeError: 'Deck' object has no attribute '_tilt_noise'
